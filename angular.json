@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "danker-app"
+    }
+  },
+  "defaultProject": "danker-app",
+  "cli": {
+    "analytics": "a8c490d5-27e8-40a5-a750-1c354765f712"
+  }
 }
