@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">Top Dankers</div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let leader of dankLeaders">{{leader.leaderName}} <span class="badge badge-primary">{{leader.leaderStatValue}}</span></li>
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let leader of dankLeaders">{{leader.leaderInfo.displayName}} <span class="badge badge-primary">{{leader.leaderStatValue}}</span></li>
     </ul>
 </div>

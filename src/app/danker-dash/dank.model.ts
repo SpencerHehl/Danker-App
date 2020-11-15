@@ -8,6 +8,6 @@ export class Dank {
 }
 
 export class DankLeaderStats {
-    leaderName: string;
+    leaderInfo: User;
     leaderStatValue: number;
 }
