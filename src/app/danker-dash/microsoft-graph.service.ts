@@ -35,8 +35,7 @@ export class MicrosoftGraphService {
       }
     });
     const peopleResults = await graphClient
-      // .api(`/users?search="displayName:${formInput}"`)
-      .api('/users/elise.weber@schehl49gmail.onmicrosoft.com')
+      .api(`/users?search="displayName:${formInput}"`)
       .header('ConsistencyLevel', 'eventual')
       .get();
     console.log(peopleResults);
