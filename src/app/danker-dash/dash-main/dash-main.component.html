@@ -1,9 +1,9 @@
 <div class="container-fluid">
-    <div class="row" style="margin-top: 2%;">
+    <div id="row-primary" class="row">
         <div class="col">
             <div class="row">
                 <div class="col">
-                    <div style="text-align: center;">
+                    <div class="section-header">
                         <h3>Give Danks!</h3>
                     </div>
                     <div class="card">
@@ -24,20 +24,28 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 2%;">
-                <h3>Dank Leaderboards</h3>
-            </div>
-            <div class="row" style="margin-top: 2%;">
+            <div id="row-leaderboards" class="row">
                 <div class="col">
-                    <app-top-danker [dankLeaders]="topDankers"></app-top-danker>
-                </div>
-                <div class="col">
-                    <app-top-dankee [dankLeaders]="topDankees"></app-top-dankee>
+                    <div class="row">
+                        <div class="col">
+                            <div class="section-header">
+                                <h3>Dank Leaderboards</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <app-top-danker [dankLeaders]="topDankers"></app-top-danker>
+                        </div>
+                        <div class="col">
+                            <app-top-dankee [dankLeaders]="topDankees"></app-top-dankee>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <h3>Recent Danks</h3>
             </div>
             <div class="row" *ngFor="let dank of recentDanks">
