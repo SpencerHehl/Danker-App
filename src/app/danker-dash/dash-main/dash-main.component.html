@@ -29,10 +29,10 @@
             </div>
             <div class="row" style="margin-top: 2%;">
                 <div class="col">
-                    <app-top-danker></app-top-danker>
+                    <app-top-danker [dankLeaders]="topDankers"></app-top-danker>
                 </div>
                 <div class="col">
-                    <app-top-dankee></app-top-dankee>
+                    <app-top-dankee [dankLeaders]="topDankees"></app-top-dankee>
                 </div>
             </div>
         </div>
@@ -40,7 +40,9 @@
             <div style="text-align: center;">
                 <h3>Recent Danks</h3>
             </div>
-            <app-danker-recents></app-danker-recents>
+            <div class="row" *ngFor="let dank of recentDanks">
+                <app-danker-recents class="col" [dank]="dank"></app-danker-recents>                        
+            </div>
         </div>
     </div>
 </div>

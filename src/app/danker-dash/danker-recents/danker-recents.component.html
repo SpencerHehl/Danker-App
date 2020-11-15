@@ -1,19 +1,16 @@
-<div class="card">
+<div class="card" style="margin: 1%;">
     <div class="card-header">
         <div class="row">
             <div class="col">
-                <h5 class="card-title">Elise Weber</h5>
+                <h5 class="card-title">{{dank.dankee.dankeeName}}</h5>
             </div>
             <div class="col" style="text-align: right;">
-                <h6 class="text-muted">10/20/20</h6>
+                <h6 class="text-muted">{{dank.dateTime}}</h6>
             </div>
         </div>
     </div>
     <div class="card-body">
-        <p>
-            Hey Elise, I really appreciated the effort you made to help me identify the problem I faced. I had been struggling to get to the bottom of it.
-            Even though it wasn't something you needed to worry about, your insights saved me hours. Thanks!
-        </p>
+        <p>{{dank.dankText}}</p>
     </div>
-    <div class="card-footer">Simon Franks</div>
+    <div class="card-footer">{{dank.danker.dankerName}}</div>
 </div>

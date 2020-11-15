@@ -10,5 +10,10 @@ export class Dank {
         dankeeEmail: string
     };
     dankText: string;
-    dateTime: Date;
+    dateTime: string;
+}
+
+export class DankLeaderStats {
+    leaderName: string;
+    leaderStatValue: number;
 }
