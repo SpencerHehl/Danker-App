@@ -25,12 +25,18 @@ export class DanksGivingComponent implements OnInit {
   searchUser() {
     const formValue = this.searchUserForm.value;
     const searchInput = formValue.userInput;
-    console.log(searchInput);
+    this.graphService.searchCoworkers(searchInput)
+      .then((users) => {
+        console.log(users);
+      });
   }
 
   onSearchInputChanges(): void {
     this.searchUserForm.get('userInput').valueChanges.subscribe(val => {
-      console.log(val);
+      this.graphService.searchCoworkers(val)
+      .then((users) => {
+        console.log(users);
+      });
     });
   }
 }

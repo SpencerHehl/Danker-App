@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { MsalService } from '@azure/msal-angular';
+import { Client } from '@microsoft/microsoft-graph-client';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import { User } from './user.model';
 
@@ -23,8 +26,10 @@ export class AuthService {
   constructor(
     private msalService: MsalService
   ) {
-    this.authenticated = false;
-    this.user = null;
+    this.authenticated = this.msalService.getAccount() != null;
+    this.getUser().then((user) => {
+      this.user = user;
+    });
   }
 
   async login(): Promise<void> {
@@ -35,7 +40,7 @@ export class AuthService {
 
     if (result) {
       this.authenticated = true;
-      // this.user = new User();
+      this.user = await this.getUser();
     }
   }
 
@@ -61,5 +66,33 @@ export class AuthService {
 
     this.authenticated = false;
     return null;
+  }
+
+  private async getUser(): Promise<User> {
+    if (!this.authenticated) {
+      return null;
+    }
+
+    const graphClient = Client.init({
+      authProvider: async (done) => {
+        const token = await this.getAccessToken()
+          .catch((error) => {
+            done(error, null);
+          });
+
+        if (token) {
+          done(null, token);
+        } else {
+          done('Could not get an access token', null);
+        }
+      }
+    });
+    const graphUser: MicrosoftGraph.User = await graphClient
+      .api('/me')
+      .select('displayName,mail,userPrincipalName')
+      .get();
+
+    const user = new User(graphUser.displayName, graphUser.mail, graphUser.userPrincipalName);
+    return user;
   }
 }
