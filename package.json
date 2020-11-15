@@ -24,6 +24,8 @@
     "@microsoft/microsoft-graph-client": "^2.1.1",
     "@microsoft/microsoft-graph-types": "^1.26.0",
     "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
     "msal": "^1.4.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

@@ -14,6 +14,7 @@ export class DankerServiceService {
   getDanks() {
   }
 
-  submitDank() {
+  submitDank(dank: Dank) {
+    console.log(dank);
   }
 }

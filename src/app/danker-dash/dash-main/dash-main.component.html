@@ -47,8 +47,15 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let user of searchResults">{{user.displayName}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let user of searchResults">{{user.displayName}}<button class="btn btn-primary" (click)="displayDankForm(user)">Danken</button></li>
                 </ul>
+            </div>
+            <div class="form-inline" *ngIf="dankee" class="modal-body">
+                <form (ngSubmit)="submitDank()" [formGroup]="giveDankForm">
+                    <textarea id="dankText" formControlName="dankText" class="form-control mr-sm-2" placeholder="Tell {{dankee.displayName}} why they are awesome!" rows="3">
+                    </textarea>
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>

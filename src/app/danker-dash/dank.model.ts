@@ -1,14 +1,8 @@
+import { User } from '../user.model';
+
 export class Dank {
-    danker: {
-        dankerId: string,
-        dankerName: string,
-        dankerEmail: string
-    };
-    dankee: {
-        dankeeId: string,
-        dankeeName: string,
-        dankeeEmail: string
-    };
+    danker: User;
+    dankee: User;
     dankText: string;
     dateTime: string;
 }
