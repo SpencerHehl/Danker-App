@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MsalModule } from '@azure/msal-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { OAuthSettings } from './auth.service';
       }
     })
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

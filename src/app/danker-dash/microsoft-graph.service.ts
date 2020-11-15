@@ -35,17 +35,14 @@ export class MicrosoftGraphService {
       }
     });
     const peopleResults = await graphClient
-      .api('/me/people')
-      .query({
-        search: formInput
-      })
-      .select('displayName,userPrincipalName,scoredEmailAddresses')
-      .top(5)
+      // .api(`/users?search="displayName:${formInput}"`)
+      .api('/users/elise.weber@schehl49gmail.onmicrosoft.com')
+      .header('ConsistencyLevel', 'eventual')
       .get();
+    console.log(peopleResults);
     const searchResults: User[] = [];
     peopleResults.value.forEach(result => {
-      const user = new User(result.displayName, null, result.userPrincipalName);
-      user.email = result.scoredEmailAddresses[0].address;
+      const user = new User(result.displayName, result.mail, result.userPrincipalName);
       searchResults.push(user);
     });
     return searchResults;

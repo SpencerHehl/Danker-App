@@ -11,6 +11,12 @@ export const OAuthSettings = {
   redirectUri: 'http://localhost:4200',
   scopes: [
     'user.read',
+    'user.readbasic.all',
+    'user.readwrite.all',
+    'directory.read.all',
+    'directory.readwrite.all',
+    'directory.accessasuser.all',
+    'group.read.all',
     'people.read',
     'people.read.all',
   ]
