@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user.model';
 import { Dank, DankLeaderStats } from '../dank.model';
+
+declare var $: any;
 
 @Component({
   selector: 'app-dash-main',
@@ -10,6 +13,7 @@ export class DashMainComponent implements OnInit {
   recentDanks: Dank[];
   topDankers: DankLeaderStats[];
   topDankees: DankLeaderStats[];
+  searchResults: User[];
 
   constructor() { }
 
@@ -100,6 +104,12 @@ export class DashMainComponent implements OnInit {
         leaderStatValue: 10
       }
     ];
+  }
+
+  displayResults(users) {
+    this.searchResults = users;
+    console.log(users);
+    $('#searchResultsModal').modal('show');
   }
 
 }

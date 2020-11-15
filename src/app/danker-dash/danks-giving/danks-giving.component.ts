@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MicrosoftGraphService } from '../microsoft-graph.service';
 import {Providers, MsalProvider} from '@microsoft/mgt';
+import { AuthService } from '../../auth.service';
+import { User } from 'src/app/user.model';
 
 @Component({
   selector: 'app-danks-giving',
@@ -10,10 +12,13 @@ import {Providers, MsalProvider} from '@microsoft/mgt';
 })
 export class DanksGivingComponent implements OnInit {
   @ViewChild('searchUserForm', {static: false}) searchUserFormValues;
+  @Output() searched = new EventEmitter<User[]>();
   searchUserForm: FormGroup;
+  searchResults: User[];
 
   constructor(
     private graphService: MicrosoftGraphService,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +37,7 @@ export class DanksGivingComponent implements OnInit {
     this.graphService.searchCoworkers(searchInput)
       .then((users) => {
         console.log(users);
+        this.searched.emit(users);
       });
   }
 
@@ -39,7 +45,7 @@ export class DanksGivingComponent implements OnInit {
     this.searchUserForm.get('userInput').valueChanges.subscribe(val => {
       this.graphService.searchCoworkers(val)
       .then((users) => {
-        console.log(users);
+        this.searchResults = users;
       });
     });
   }

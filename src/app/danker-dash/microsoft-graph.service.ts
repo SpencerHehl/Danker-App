@@ -35,10 +35,10 @@ export class MicrosoftGraphService {
       }
     });
     const peopleResults = await graphClient
-      .api(`/users?search="displayName:${formInput}"`)
+      .api(`/users`)
+      .search(`"displayName:${formInput}"`)
       .header('ConsistencyLevel', 'eventual')
       .get();
-    console.log(peopleResults);
     const searchResults: User[] = [];
     peopleResults.value.forEach(result => {
       const user = new User(result.displayName, result.mail, result.userPrincipalName);

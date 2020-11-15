@@ -11,9 +11,23 @@
     </div>
     <div class="card-body">
         <h6 class="card-title">Get Started:</h6>
-        <form class="form-inline" (ngSubmit)="searchUser()" [formGroup]="searchUserForm">
-            <input id="userInput" formControlName="userInput" class="form-control mr-sm-2" type="search" placeholder="Find a coworker" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div *ngIf="auth.isAuthenticated()">
+            <form class="form-inline" (ngSubmit)="searchUser()" [formGroup]="searchUserForm">
+                <input id="userInput" formControlName="userInput" class="form-control mr-sm-2" type="search" placeholder="Find a coworker" aria-label="Search">
+                <datalist id="userSearchResults">
+                    <option *ngFor="let user of searchResults" value="{{user.displayName}}"></option>
+                </datalist>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <div *ngIf="!auth.isAuthenticated()">
+            <p>You need to log in to be able to search for coworkers and give a Dank.</p>
+            <a
+                class="btn btn-primary"
+                routerLink=""
+                (click)="auth.login()"
+                >Log In</a
+            >
+        </div>
     </div>
 </div>
