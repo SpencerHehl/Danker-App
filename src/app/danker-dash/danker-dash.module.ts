@@ -5,11 +5,12 @@ import { DankerRecentsComponent } from './danker-recents/danker-recents.componen
 import { TopDankerComponent } from './top-danker/top-danker.component';
 import { TopDankeeComponent } from './top-dankee/top-dankee.component';
 import { DankerDashRoutingModule } from './danker-dash-routing.module';
+import { DanksGivingComponent } from './danks-giving/danks-giving.component';
 
 
 
 @NgModule({
-  declarations: [DashMainComponent, DankerRecentsComponent, TopDankerComponent, TopDankeeComponent],
+  declarations: [DashMainComponent, DankerRecentsComponent, TopDankerComponent, TopDankeeComponent, DanksGivingComponent],
   imports: [
     CommonModule,
     DankerDashRoutingModule,
