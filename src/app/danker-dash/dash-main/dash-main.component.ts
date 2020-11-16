@@ -56,10 +56,10 @@ export class DashMainComponent implements OnInit {
       .subscribe((dank) => {
         console.log(dank);
         this.refreshEvent.emit();
+        $('#searchResultsModal').modal('hide');
       },
       (err) => {
         console.error(err);
       });
-    $('#searchResultsModal').modal('hide');
   }
 }

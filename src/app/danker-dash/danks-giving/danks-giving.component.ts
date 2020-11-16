@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MicrosoftGraphService } from '../microsoft-graph.service';
 import {Providers, MsalProvider} from '@microsoft/mgt';
@@ -13,6 +13,7 @@ import { User } from 'src/app/user.model';
 export class DanksGivingComponent implements OnInit {
   @ViewChild('searchUserForm', {static: false}) searchUserFormValues;
   @Output() searched = new EventEmitter<User[]>();
+  @Input() refreshEvent: EventEmitter<any>;
   searchUserForm: FormGroup;
   searchResults: User[];
 
@@ -29,6 +30,9 @@ export class DanksGivingComponent implements OnInit {
       userInput: new FormControl(),
     });
     this.onSearchInputChanges();
+    this.refreshEvent.subscribe((data) => {
+      this.searchUserForm.reset();
+    });
   }
 
   searchUser() {

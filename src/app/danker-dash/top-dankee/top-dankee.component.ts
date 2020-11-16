@@ -24,6 +24,7 @@ export class TopDankeeComponent implements OnInit {
   getDankeeLeaders() {
     this.dankService.getDankeeLeaders()
     .subscribe((leaders: any) => {
+      console.log(leaders);
       this.dankLeaders = leaders;
     },
     (err) => {

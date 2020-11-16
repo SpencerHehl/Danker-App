@@ -3,7 +3,7 @@
         <div class="col">
             <div class="row">
                 <div class="col">
-                    <app-danks-giving (searched)="displayResults($event)"></app-danks-giving>
+                    <app-danks-giving [refreshEvent]="refreshEvent" (searched)="displayResults($event)"></app-danks-giving>
                 </div>
             </div>
             <div id="row-leaderboards" class="row">

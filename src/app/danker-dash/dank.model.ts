@@ -9,6 +9,7 @@ export class Dank {
 }
 
 export class DankLeaderStats {
-    _id: User;
+    _id: string;
+    leaderInfo: User;
     count: number;
 }
