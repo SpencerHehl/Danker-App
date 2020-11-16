@@ -6,15 +6,49 @@ import { Dank } from './dank.model';
   providedIn: 'root'
 })
 export class DankerServiceService {
+  baseUri = 'http://localhost:8080/api';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getDanks() {
+  getRecentDanks() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const uri = this.baseUri + '/danke/recents';
+    return this.http.get(uri, httpOptions);
+  }
+
+  getDankerLeaders() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const uri = this.baseUri + '/leaders/danker';
+    return this.http.get(uri, httpOptions);
+  }
+
+  getDankeeLeaders() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const uri = this.baseUri + '/leaders/dankee';
+    return this.http.get(uri, httpOptions);
   }
 
   submitDank(dank: Dank) {
-    console.log(dank);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    const uri = this.baseUri + '/danke/recents';
+    return this.http.post(uri, dank, httpOptions);
   }
 }

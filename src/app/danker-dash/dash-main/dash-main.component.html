@@ -17,10 +17,10 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <app-top-danker [dankLeaders]="topDankers"></app-top-danker>
+                            <app-top-danker></app-top-danker>
                         </div>
                         <div class="col">
-                            <app-top-dankee [dankLeaders]="topDankees"></app-top-dankee>
+                            <app-top-dankee></app-top-dankee>
                         </div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
             <div class="section-header">
                 <h3>Recent Danke</h3>
             </div>
-            <div class="row" *ngFor="let dank of recentDanks">
-                <app-danker-recents class="col" [dank]="dank"></app-danker-recents>                        
+            <div class="row">
+                <app-danker-recents class="col"></app-danker-recents>                        
             </div>
         </div>
     </div>

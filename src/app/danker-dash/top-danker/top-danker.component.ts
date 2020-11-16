@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DankLeaderStats } from '../dank.model';
+import { DankerServiceService } from '../danker-service.service';
 
 @Component({
   selector: 'app-top-danker',
@@ -7,10 +8,19 @@ import { DankLeaderStats } from '../dank.model';
   styleUrls: ['./top-danker.component.sass']
 })
 export class TopDankerComponent implements OnInit {
-  @Input() dankLeaders: DankLeaderStats[];
-  constructor() { }
+  dankLeaders: DankLeaderStats[];
+  constructor(
+    private dankService: DankerServiceService
+  ) { }
 
   ngOnInit(): void {
+    this.dankService.getDankerLeaders()
+      .subscribe((leaders: any) => {
+        this.dankLeaders = leaders;
+      },
+      (err) => {
+        console.error(err);
+      });
   }
 
 }
