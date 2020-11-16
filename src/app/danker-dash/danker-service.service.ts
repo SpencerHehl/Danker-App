@@ -6,7 +6,7 @@ import { Dank } from './dank.model';
   providedIn: 'root'
 })
 export class DankerServiceService {
-  baseUri = 'http://localhost:8080/api';
+  baseUri = 'https://danker-backend.azurewebsites.net/api';
 
   constructor(
     private http: HttpClient
