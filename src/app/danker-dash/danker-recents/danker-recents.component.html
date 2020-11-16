@@ -2,15 +2,15 @@
     <div class="card-header">
         <div class="row">
             <div class="col">
-                <h5 class="card-title">{{dank.dankee.dankeeName}}</h5>
+                <h5 class="card-title">{{dank.dankee.displayName}}</h5>
             </div>
             <div class="col" style="text-align: right;">
-                <h6 class="text-muted">{{dank.dateTime}}</h6>
+                <h6 class="text-muted">{{dank.dateTime | date:'short'}}</h6>
             </div>
         </div>
     </div>
     <div class="card-body">
         <p>{{dank.dankText}}</p>
     </div>
-    <div class="card-footer">{{dank.danker.dankerName}}</div>
+    <div class="card-footer">{{dank.danker.displayName}}</div>
 </div>

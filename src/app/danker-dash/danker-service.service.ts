@@ -48,7 +48,7 @@ export class DankerServiceService {
         'Content-Type': 'application/json'
       }),
     };
-    const uri = this.baseUri + '/danke/recents';
+    const uri = this.baseUri + '/danke';
     return this.http.post(uri, dank, httpOptions);
   }
 }

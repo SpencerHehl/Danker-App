@@ -17,10 +17,10 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <app-top-danker></app-top-danker>
+                            <app-top-danker [refreshEvent]="refreshEvent"></app-top-danker>
                         </div>
                         <div class="col">
-                            <app-top-dankee></app-top-dankee>
+                            <app-top-dankee [refreshEvent]="refreshEvent"></app-top-dankee>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <h3>Recent Danke</h3>
             </div>
             <div class="row">
-                <app-danker-recents class="col"></app-danker-recents>                        
+                <app-danker-recents class="col" [refreshEvent]="refreshEvent"></app-danker-recents>                        
             </div>
         </div>
     </div>

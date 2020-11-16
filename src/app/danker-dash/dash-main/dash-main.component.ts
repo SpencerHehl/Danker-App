@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/user.model';
@@ -15,6 +15,7 @@ declare var $: any;
 })
 export class DashMainComponent implements OnInit {
   @ViewChild('giveDankForm', {static: false}) giveDankFormValues;
+  @Output() refreshEvent = new EventEmitter<any>();
   recentDanks: Dank[];
   topDankers: DankLeaderStats[];
   topDankees: DankLeaderStats[];
@@ -24,7 +25,7 @@ export class DashMainComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private dankerService: DankerServiceService
+    private dankerService: DankerServiceService,
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +51,15 @@ export class DashMainComponent implements OnInit {
     newDank.dankee = this.dankee;
     newDank.danker = this.auth.user;
     newDank.dateTime = moment.utc().format();
-    this.dankerService.submitDank(newDank);
+    console.log(newDank);
+    this.dankerService.submitDank(newDank)
+      .subscribe((dank) => {
+        console.log(dank);
+        this.refreshEvent.emit();
+      },
+      (err) => {
+        console.error(err);
+      });
+    $('#searchResultsModal').modal('hide');
   }
 }

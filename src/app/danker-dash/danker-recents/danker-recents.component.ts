@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { runInThisContext } from 'vm';
 import { Dank } from '../dank.model';
 import { DankerServiceService } from '../danker-service.service';
 
@@ -8,19 +9,28 @@ import { DankerServiceService } from '../danker-service.service';
   styleUrls: ['./danker-recents.component.sass']
 })
 export class DankerRecentsComponent implements OnInit {
+  @Input() refreshEvent: EventEmitter<any>;
   danks: Dank[];
   constructor(
-    private dankService: DankerServiceService
+    private dankService: DankerServiceService,
   ) { }
 
   ngOnInit(): void {
+    this.getRecentDanks();
+    this.refreshEvent.subscribe((data) => {
+      this.getRecentDanks();
+    });
+  }
+
+  getRecentDanks() {
     this.dankService.getRecentDanks()
-      .subscribe((danks: any) => {
-        this.danks = danks;
-      },
-      (err) => {
-        console.error(err);
-      });
+    .subscribe((danks: any) => {
+      console.log(danks);
+      this.danks = danks;
+    },
+    (err) => {
+      console.error(err);
+    });
   }
 
 }

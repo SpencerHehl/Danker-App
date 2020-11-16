@@ -1,13 +1,14 @@
 import { User } from '../user.model';
 
 export class Dank {
-    danker: User;
-    dankee: User;
-    dankText: string;
-    dateTime: string;
+    public danker: User;
+    public dankee: User;
+    public dankText: string;
+    public dateTime: string;
+    public _id?: string;
 }
 
 export class DankLeaderStats {
-    leaderInfo: User;
-    leaderStatValue: number;
+    _id: User;
+    count: number;
 }
