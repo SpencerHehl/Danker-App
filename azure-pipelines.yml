@@ -24,4 +24,4 @@ steps:
     azureSubscription: 'Azure subscription 1 (754a6a4e-f9e6-43c1-a402-a1fe49c7568e)'
     appType: 'webApp'
     WebAppName: 'Danker-App'
-    packageForLinux: 'dist/'
+    packageForLinux: 'dist/danker-app'
