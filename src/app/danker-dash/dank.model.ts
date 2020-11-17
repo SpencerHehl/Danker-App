@@ -12,4 +12,5 @@ export class DankLeaderStats {
     _id: string;
     leaderInfo: User;
     count: number;
+    photo: string;
 }
