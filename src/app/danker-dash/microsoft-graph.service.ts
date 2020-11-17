@@ -46,4 +46,32 @@ export class MicrosoftGraphService {
     });
     return searchResults;
   }
+
+  async getProfilePhoto(upn): Promise<string> {
+    if (!this.authService.isAuthenticated()) {
+      return null;
+    }
+
+    const graphClient = Client.init({
+      authProvider: async (done) => {
+        const token = await this.authService.getAccessToken()
+          .catch((error) => {
+            done(error, null);
+          });
+
+        if (token) {
+          done(null, token);
+        } else {
+          done('Could not get an access token', null);
+        }
+      }
+    });
+
+    const photoResponse = await graphClient
+      .api(`/users/${upn}/photo/$value`)
+      .get();
+
+    console.log(photoResponse);
+    return photoResponse.data;
+  }
 }

@@ -8,7 +8,8 @@ import { User } from './user.model';
 
 export const OAuthSettings = {
   appId: 'b28f8cf4-1ad5-4103-a374-9dd4326ac459',
-  redirectUri: 'https://danker-app.azurewebsites.net',
+  redirectUri: 'http://localhost:4200',
+  // redirectUri: 'https://danker-app.azurewebsites.net',
   scopes: [
     'user.read',
     'user.readbasic.all',

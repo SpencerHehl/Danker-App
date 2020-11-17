@@ -6,12 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DankerDashModule } from './danker-dash/danker-dash.module';
 import { OAuthSettings } from './auth.service';
-import { SubmitDankComponent } from './submit-dank/submit-dank.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubmitDankComponent
   ],
   imports: [
     BrowserModule,

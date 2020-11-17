@@ -3,6 +3,7 @@ export class User {
     public email: string;
     public userId: string;
     public _id?: string;
+    public photo?: string;
 
     constructor(displayName?: string, email?: string, userId?: string) {
         this.displayName = displayName;
