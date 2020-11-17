@@ -1,21 +1,33 @@
 <div *ngFor="let dank of danks" class="card">
     <div class="card-header">
         <div class="row">
-            <div class="col">
-                <div class="card-img-block">
-                    <img class="img-fluid" [src]="dank.dankee.profilePicture">
+            <div class="col" style="text-align: left;">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title">{{dank.dankee.displayName}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6 class="text-muted" style="float: left; margin-bottom: 1vh;">{{dank.dateTime | date:'short'}}</h6>
+                    </div>
                 </div>
             </div>
             <div class="col">
-                <h5 class="card-title">{{dank.dankee.displayName}}</h5>
-            </div>
-            <div class="col" style="text-align: right;">
-                <h6 class="text-muted">{{dank.dateTime | date:'short'}}</h6>
+                <img class="profilePic" [src]="dank.dankee.photo">
             </div>
         </div>
     </div>
     <div class="card-body">
-        <p>{{dank.dankText}}</p>
+        <div class="row">
+            <div class="col">
+                <p>{{dank.dankText}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-muted">Written By: {{dank.danker.displayName}}</p>
+            </div>
+        </div>
     </div>
-    <div class="card-footer">{{dank.danker.displayName}}</div>
 </div>

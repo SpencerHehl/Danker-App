@@ -10,6 +10,7 @@ import { DankerServiceService } from '../danker-service.service';
 export class TopDankerComponent implements OnInit {
   @Input() refreshEvent: EventEmitter<any>;
   dankLeaders: DankLeaderStats[];
+  topDanker;
   constructor(
     private dankService: DankerServiceService
   ) { }
@@ -25,6 +26,11 @@ export class TopDankerComponent implements OnInit {
     this.dankService.getDankerLeaders()
       .subscribe((leaders: any) => {
         this.dankLeaders = leaders;
+        const topDanker = leaders[0];
+        this.topDanker = {
+          displayName: topDanker.leaderInfo.displayName,
+          photo: `assets/images/${topDanker.leaderInfo.userId}.jpg`
+        };
       },
       (err) => {
         console.error(err);

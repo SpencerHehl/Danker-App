@@ -10,7 +10,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [DashMainComponent, DankerRecentsComponent, TopDankerComponent, TopDankeeComponent, DanksGivingComponent],
+  declarations: [
+    DashMainComponent,
+    DankerRecentsComponent,
+    TopDankerComponent,
+    TopDankeeComponent,
+    DanksGivingComponent,
+  ],
   imports: [
     CommonModule,
     DankerDashRoutingModule,
