@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DankerDashModule } from './danker-dash/danker-dash.module';
 
 const routes: Routes = [
-  { path: '#', redirectTo: 'dashboard' },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full', loadChildren: () => DankerDashModule }
 ];
 
 @NgModule({
