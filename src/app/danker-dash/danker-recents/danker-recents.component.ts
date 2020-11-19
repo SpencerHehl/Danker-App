@@ -28,6 +28,7 @@ export class DankerRecentsComponent implements OnInit {
   getRecentDanks() {
     this.dankService.getRecentDanks()
     .subscribe((danks: any) => {
+      this.danks = [];
       danks.forEach((dank) => {
         dank.dankee.photo = `assets/images/${dank.dankee.userId}.jpg`;
         this.danks.push(dank);

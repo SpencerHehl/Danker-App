@@ -28,6 +28,7 @@ export class TopDankerComponent implements OnInit {
   getDankerLeaders() {
     this.dankService.getDankerLeaders(this.leaderboardFilter)
       .subscribe((leaders: any) => {
+        console.log(leaders);
         this.dankLeaders = leaders;
         const topDanker = leaders[0];
         this.topDanker = {
