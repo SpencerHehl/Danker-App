@@ -22,23 +22,23 @@ export class DankerServiceService {
     return this.http.get(uri, httpOptions);
   }
 
-  getDankerLeaders() {
+  getDankerLeaders(filter) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    const uri = this.baseUri + '/leaders/danker';
+    const uri = `${this.baseUri}/leaders/danker?filter=${filter}`;
     return this.http.get(uri, httpOptions);
   }
 
-  getDankeeLeaders() {
+  getDankeeLeaders(filter) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    const uri = this.baseUri + '/leaders/dankee';
+    const uri = `${this.baseUri}/leaders/dankee?filter=${filter}`;
     return this.http.get(uri, httpOptions);
   }
 

@@ -11,6 +11,7 @@ export class TopDankerComponent implements OnInit {
   @Input() refreshEvent: EventEmitter<any>;
   dankLeaders: DankLeaderStats[];
   topDanker;
+  leaderboardFilter = 'month';
   constructor(
     private dankService: DankerServiceService
   ) { }
@@ -18,12 +19,13 @@ export class TopDankerComponent implements OnInit {
   ngOnInit(): void {
     this.getDankerLeaders();
     this.refreshEvent.subscribe((data) => {
+      this.leaderboardFilter = data;
       this.getDankerLeaders();
     });
   }
 
   getDankerLeaders() {
-    this.dankService.getDankerLeaders()
+    this.dankService.getDankerLeaders(this.leaderboardFilter)
       .subscribe((leaders: any) => {
         this.dankLeaders = leaders;
         const topDanker = leaders[0];

@@ -22,6 +22,7 @@ export class DashMainComponent implements OnInit {
   searchResults: User[];
   dankee: User;
   giveDankForm: FormGroup;
+  leaderboardFilter = 'month';
 
   constructor(
     private auth: AuthService,
@@ -55,11 +56,15 @@ export class DashMainComponent implements OnInit {
     this.dankerService.submitDank(newDank)
       .subscribe((dank) => {
         console.log(dank);
-        this.refreshEvent.emit();
+        this.refreshEvent.emit(this.leaderboardFilter);
         $('#searchResultsModal').modal('hide');
       },
       (err) => {
         console.error(err);
       });
+  }
+
+  updateFilter(filter) {
+    this.leaderboardFilter = filter;
   }
 }
