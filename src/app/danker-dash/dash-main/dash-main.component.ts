@@ -66,5 +66,6 @@ export class DashMainComponent implements OnInit {
 
   updateFilter(filter) {
     this.leaderboardFilter = filter;
+    this.refreshEvent.emit(this.leaderboardFilter);
   }
 }
