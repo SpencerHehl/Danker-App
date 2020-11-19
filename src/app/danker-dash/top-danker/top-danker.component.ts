@@ -20,6 +20,7 @@ export class TopDankerComponent implements OnInit {
     this.getDankerLeaders();
     this.refreshEvent.subscribe((data) => {
       this.leaderboardFilter = data;
+      console.log(this.leaderboardFilter);
       this.getDankerLeaders();
     });
   }
